@@ -9,9 +9,6 @@ for(let i of newMess){
     i.message = i.message.slice(0, 18) + ""
 }
 
-let studentsNum = JSON.parse(localStorage.getItem("students")).length
-let teachersNum = JSON.parse(localStorage.getItem("teachers")).length
-
 localStorage.setItem("title", "Dashboard")
 
 </script>
