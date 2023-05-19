@@ -2,7 +2,9 @@
 
 import Sidebar from "../components/Sidebar/Sidebar.vue"
 import Header from "../components/Header/Header.vue";
-import Dashboard from "./Dashboard/Dashboard.vue"
+import Footer from "../components/Footer/Footer.vue";
+
+console.log(window.location.href);
 
 </script>
 
@@ -12,8 +14,8 @@ import Dashboard from "./Dashboard/Dashboard.vue"
       <Sidebar />
       <div class="p-4 ml-[320px] bg-[#F3F4FF]">
           <Header />
-          <Dashboard />
           <router-view></router-view>
+          <Footer />
       </div>
     </section>
   </main>
