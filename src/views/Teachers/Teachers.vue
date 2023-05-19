@@ -25,7 +25,7 @@ const teacherInfo = reactive({
 
 const trash = (id) => {
     store.DELETE(id)
-    location.reload()
+    window.location.reload()
 }
 
 const addTeacher = () => {
@@ -52,7 +52,7 @@ const addTeacher = () => {
     teacherInfo.subject = ""
     teacherInfo.login = ""
     teacherInfo.password = ""
-    location.reload()
+    window.location.reload()
     toggleModal1()
 
 }
@@ -124,7 +124,7 @@ const addTeacher = () => {
                         <div>
                             <label for="price"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fan</label>
-                            <select id="category"
+                            <select id="category" v-model="teacherInfo.subject"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected="" disabled>Fanni tanlang</option>
                                 <option value="Frilanserlik">Frilanserlik</option>
