@@ -5,7 +5,7 @@ import { messages } from "../../constants/messages";
 
 const newMess = messages
 
-for (let i of newMess) {
+for(let i of newMess){
     i.message = i.message.slice(0, 18) + ""
 }
 
@@ -42,8 +42,7 @@ localStorage.setItem("title", "Dashboard")
     </nav>
 
     <div style="display:grid; grid-template-columns: 70% 30%;" class="px-[50px]">
-        <div>
-            <div class="flex justify-evenly items-evenly bg-white py-8 rounded-2xl mr-6 h-[200px]">
+        <div class="flex justify-evenly items-evenly bg-white py-8 rounded-2xl mr-6 h-[200px]">
             <div class="grid grid-cols-2 items-center w-[195px]">
                 <div class="rounded-full w-[64px] p-3 bg-[#4D44B5] hover:bg-white hover:text-[#4D44B5] duration-200 text-white flex justify-center items-center">
                     <i class="bx bx-user text-[40px]"></i>
@@ -96,10 +95,6 @@ localStorage.setItem("title", "Dashboard")
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="mt-6">
-            
-        </div>
         </div>
         <div class="py-8 px-8 bg-white rounded-2xl">
             <div class="flex justify-between items-center pb-12">
