@@ -1,14 +1,6 @@
 <script setup>
 
-import { ref, reactive } from "vue"
-import { teacherStore } from "../../stores/teachers/teacherStore"
-
-const store = teacherStore()
-
-const teachers = JSON.parse(localStorage.getItem("teachers"))
-
-const Createmodal = ref(false)
-const toggleModal1 = () => Createmodal.value = !Createmodal.value
+import { Teachers } from '../../constants/teachers';
 
 localStorage.setItem("title", "Teachers")
 
@@ -25,7 +17,7 @@ const teacherInfo = reactive({
 
 const trash = (id) => {
     store.DELETE(id)
-    window.location.reload()
+    location.reload()
 }
 
 const addTeacher = () => {
@@ -52,7 +44,7 @@ const addTeacher = () => {
     teacherInfo.subject = ""
     teacherInfo.login = ""
     teacherInfo.password = ""
-    window.location.reload()
+    location.reload()
     toggleModal1()
 
 }
@@ -124,7 +116,7 @@ const addTeacher = () => {
                         <div>
                             <label for="price"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fan</label>
-                            <select id="category" v-model="teacherInfo.subject"
+                            <select id="category"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected="" disabled>Fanni tanlang</option>
                                 <option value="Frilanserlik">Frilanserlik</option>
@@ -170,24 +162,22 @@ const addTeacher = () => {
         <div style="display:grid; grid-template-columns: 70% 30%;">
             <h1 class="text-[30px] font-bold text-[#303972]">Teachers</h1>
             <ul class="flex flex-col font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                <li class="border rounded-full w-[64px] mr-[-15px] h-[64px] flex justify-center items-center">
-                    <lord-icon src="https://cdn.lordicon.com/psnhyobz.json" trigger="hover" colors="primary: #A098AE"
-                        state="loop" style="width: 35px; height: 35px"></lord-icon>
-                </li>
-                <li class="border rounded-full w-[64px] h-[64px] flex justify-center items-center">
-                    <lord-icon src="https://cdn.lordicon.com/hwuyodym.json" trigger="hover" colors="primary: #A098AE"
-                        state="loop" style="width: 35px; height: 35px"></lord-icon>
-                </li>
-                <li>
-                    <div class="grid grid-cols-1 text-center items-center h-[64px]">
-                        <h1 class="text-[#303972]">Azizxon Muzaffarov</h1>
-                        <h1 class="text-[#A098AE]">Admin</h1>
-                    </div>
-                </li>
-                <li>
-                    <img class="w-[60px] rounded-full" src="../../img/1663148872552.jpg" alt="">
-                </li>
-            </ul>
+                    <li class="border rounded-full w-[64px] mr-[-15px] h-[64px] flex justify-center items-center">
+                        <lord-icon src="https://cdn.lordicon.com/psnhyobz.json" trigger="hover" colors="primary: #A098AE" state="loop" style="width: 35px; height: 35px"></lord-icon>
+                    </li>
+                    <li class="border rounded-full w-[64px] h-[64px] flex justify-center items-center">
+                        <lord-icon src="https://cdn.lordicon.com/hwuyodym.json" trigger="hover" colors="primary: #A098AE" state="loop" style="width: 35px; height: 35px"></lord-icon>
+                    </li>
+                    <li>
+                        <div class="grid grid-cols-1 text-center items-center h-[64px]">
+                            <h1 class="text-[#303972]">Azizxon Muzaffarov</h1>
+                            <h1 class="text-[#A098AE]">Admin</h1>
+                        </div>
+                    </li>
+                    <li>
+                        <img class="w-[60px] rounded-full" src="../../img/1663148872552.jpg" alt="">
+                    </li>
+                </ul>
         </div>
     </nav>
 
@@ -204,13 +194,11 @@ const addTeacher = () => {
                 class="block w-[370px] p-4 pl-10 text-sm text-gray-900 rounded-full focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Qidiruv" required>
         </div>
-        <button @click="toggleModal1"
-            class="w-[230px] h-[52px] text-3xl text-white rounded-full bg-[#4D44B5] flex justify-center items-center hover:bg-[#F3F4FF] hover:text-[#4D44B5] duration-200"><i
-                class='bx bx-plus'></i></button>
+        <button class="w-[230px] h-[52px] text-3xl text-white rounded-full bg-[#4D44B5] flex justify-center items-center hover:bg-[#F3F4FF] hover:text-[#4D44B5] duration-200"><i class='bx bx-plus' ></i></button>
     </div>
 
     <div class="grid grid-cols-4 gap-6 px-[50px]">
-        <div v-for="el in teachers"
+        <div v-for="el in Teachers"
             class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div class="flex justify-end px-4 pt-4">
                 <button id="dropdownButton" data-dropdown-toggle="dropdown"
@@ -225,48 +213,40 @@ const addTeacher = () => {
                     </svg>
                 </button>
                 <!-- Dropdown menu -->
-            <div id="dropdown"
-                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                            out</a>
-                    </li>
-                </ul>
+                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+      </li>
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+      </li>
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+      </li>
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+      </li>
+    </ul>
+</div>
+            </div>
+            <div class="flex flex-col items-center pb-10">
+                <img class="w-24 h-24 mb-3 rounded-full shadow-lg" :src="el.img" alt="" />
+                <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ el.name }}</h5>
+                <span class="text-sm text-gray-500 dark:text-gray-400">{{ el.subject }}</span>
+                <div class="flex mt-4 space-x-3 md:mt-6">
+                    <a href="#"
+                        class="bg-[#4D44B5] hover:text-[#4d44b5] hover:bg-white duration-200 text-white rounded-full flex justify-center items-center p-3 text-2xl"><i
+                            class='bx bx-phone'></i></a>
+                    <a href="#"
+                        class="bg-[#4D44B5] hover:text-[#4d44b5] hover:bg-white duration-200 text-white rounded-full flex justify-center items-center p-3 text-2xl"><i
+                            class='bx bx-envelope'></i></a>
+                </div>
             </div>
         </div>
-        <div class="flex flex-col items-center pb-10">
-            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" :src="el.img" alt="" />
-            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ el.first_name }} {{ el.second_name }}</h5>
-            <span class="text-sm text-gray-500 dark:text-gray-400">{{ el.subject }}</span>
-            <div class="flex mt-4 space-x-3 md:mt-6">
-                <buttton class="bg-[#4D44B5] hover:text-[#4d44b5] hover:bg-white duration-200 text-white rounded-full flex justify-center items-center p-3 text-2xl">
-                    <i class='bx bx-phone'></i>
-                </buttton>
-                <button class="bg-[#4D44B5] hover:text-[#4d44b5] hover:bg-white duration-200 text-white rounded-full flex justify-center items-center p-3 text-2xl">
-                    <i class='bx bx-envelope'></i>
-                </button>
-                <button @click="trash(el)" class="bg-[#4D44B5] hover:text-[#4d44b5] hover:bg-white duration-200 text-white rounded-full flex justify-center items-center p-3 text-2xl">
-                    <i class='bx bx-trash'></i>
-                </button>
-            </div>
-        </div>
+        
     </div>
-
-</div></template>
+    </template>
 
 
 <style lang="">

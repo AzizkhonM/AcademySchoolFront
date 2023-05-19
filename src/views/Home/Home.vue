@@ -20,7 +20,7 @@ localStorage.setItem("title", "Dashboard")
 <template lang="">
     <nav class="bg-[#F3F4FF] border-gray-200 px-[50px] py-[35px]">
         <div style="display:grid; grid-template-columns: 70% 30%;">
-            <h1 class="text-[30px] font-bold text-[#303972]">Dashboard</h1>
+            <h1 class="text-[30px] font-bold text-[#303972]">Students</h1>
             <ul class="flex flex-col font-medium lg:flex-row lg:space-x-8 lg:mt-0 justify-end">
                     <li class="border rounded-full w-[64px] mr-[-15px] h-[64px] flex justify-center items-center">
                         <lord-icon src="https://cdn.lordicon.com/psnhyobz.json" trigger="hover" colors="primary: #A098AE" state="loop" style="width: 35px; height: 35px"></lord-icon>
@@ -41,7 +41,7 @@ localStorage.setItem("title", "Dashboard")
         </div>
     </nav>
 
-    <div style="display:grid; grid-template-columns: 70% 30%;" class="px-[50px]">
+    <div style="display:grid; grid-template-columns: 70% 30%;" class="px-[50px] py-[25px]">
         <div class="flex justify-evenly items-evenly bg-white py-8 rounded-2xl mr-6 h-[200px]">
             <div class="grid grid-cols-2 items-center w-[195px]">
                 <div class="rounded-full w-[64px] p-3 bg-[#4D44B5] hover:bg-white hover:text-[#4D44B5] duration-200 text-white flex justify-center items-center">

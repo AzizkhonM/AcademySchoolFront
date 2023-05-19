@@ -8,8 +8,7 @@ const students = JSON.parse(localStorage.getItem("students"))
 const store = studentStore()
 
 const Createmodal = ref(false)
-const toggleModal1 = () => Createmodal.value = !Createmodal.value
-
+const toggleModal = () => Createmodal.value = !Createmodal.value
 
 const studentInfo = reactive({
     first_name: "",
@@ -52,7 +51,7 @@ const addStudent = () => {
     studentInfo.login =  ""
     studentInfo.password = ""
     location.reload()
-    toggleModal1() 
+    toggleModal() 
 
 }
 
@@ -63,6 +62,8 @@ const addStudent = () => {
 
 <template lang="">
 
+
+<!-- Main modal -->
 <div id="defaultModal" tabindex="-1" aria-hidden="true" :class="Createmodal ? 'bg-[rgba(0,0,0,0.4)] overflow-y-auto flex overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full' : 'hidden'">
     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
         <!-- Modal content -->
@@ -70,9 +71,9 @@ const addStudent = () => {
             <!-- Modal header -->
             <div class="flex items-center justify-between bg-[#4D44B5] px-5 py-3 mb-4 rounded-2xl border-b sm:mb-5">
                 <h3 class="text-lg font-semibold text-white dark:text-white">
-                    O'quvchi qo'shish
+                    Add Product
                 </h3>
-                <button @click="toggleModal1" type="button" class="text-white bg-transparent hover:bg-gray-200 hover:text-[#4D44B5] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
+                <button @click="toggleModal" type="button" class="text-white bg-transparent hover:bg-gray-200 hover:text-[#4D44B5] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     <span class="sr-only">Close modal</span>
                 </button>
@@ -168,7 +169,7 @@ const addStudent = () => {
                 class="block w-[370px] p-4 pl-10 text-sm text-gray-900 rounded-full focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Qidiruv" required>
         </div>
-        <button @click="toggleModal1" class="w-[230px] h-[52px] text-3xl text-white rounded-full bg-[#4D44B5] flex justify-center items-center hover:bg-[#F3F4FF] hover:text-[#4D44B5] duration-200"><i class='bx bx-plus'></i></button>
+        <button @click="toggleModal" class="w-[230px] h-[52px] text-3xl text-white rounded-full bg-[#4D44B5] flex justify-center items-center hover:bg-[#F3F4FF] hover:text-[#4D44B5] duration-200"><i class='bx bx-plus'></i></button>
     </div>
 
     <div class="px-[50px] py-[25px]">
@@ -224,8 +225,8 @@ const addStudent = () => {
                 </td>
                 <td class="px-6 py-4">
                     <div>
-                        <i @click="trash(el.id)" class='text-xl bx bx-trash mr-4 hover:text-black'></i>
-                        <i class='text-xl bx bx-pencil'></i>
+                        <i @click="trash(el.id)" class='text-xl bx bx-trash mr-4'></i>
+                        <i @click="edit(el.id)" class='text-xl bx bx-pencil'></i>
                     </div>
                 </td>
             </tr>
